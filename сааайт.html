@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Тюмень — путеводитель</title>
+
+<style>
+:root {
+  --primary:#1f3a5f;
+  --accent:#c65a3a;
+  --light:#ffffff;
+  --bg:#f4f6f8;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial,sans-serif;background:var(--bg);color:#333;line-height:1.6;}
+
+header{background:var(--primary);color:white;padding:1rem;position:sticky;top:0;}
+nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+nav a{color:white;margin:0.5rem;text-decoration:none;font-weight:bold;}
+
+.hero{
+background:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+url('https://upload.wikimedia.org/wikipedia/commons/6/69/Tyumen_embankment.jpg');
+background-size:cover;background-position:center;
+color:white;padding:4rem 1rem;text-align:center;
+}
+
+section{padding:2rem 1rem;max-width:1100px;margin:auto;}
+h2{color:var(--primary);margin-bottom:1rem;}
+
+.filters{margin-bottom:1rem;}
+.filters button{
+margin:0.3rem;padding:0.5rem 0.8rem;border:none;
+background:var(--primary);color:white;border-radius:4px;cursor:pointer;
+}
+.filters button.active,.filters button:hover{background:var(--accent);}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:1rem;
+}
+.card{
+background:white;border-radius:8px;overflow:hidden;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+.card img{width:100%;height:160px;object-fit:cover;}
+.card div{padding:1rem;}
+.card h3{margin-bottom:0.5rem;}
+
+footer{background:var(--primary);color:white;text-align:center;padding:1rem;margin-top:2rem;}
+@media(max-width:600px){.hero{padding:2rem 1rem;}}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<strong>Тюмень</strong>
+<div>
+<a href="#about">О проекте</a>
+<a href="#places">Места</a>
+<a href="#routes">Маршруты</a>
+</div>
+</nav>
+</header>
+
+<div class="hero">
+<h1>Тюмень: между прошлым и настоящим</h1>
+<p>Интерактивный путеводитель по городу</p>
+</div>
+
+<section id="about">
+<h2>О проекте</h2>
+<p>Сайт создан как школьный проект и знакомит пользователей с историей, архитектурой и современными общественными пространствами Тюмени.</p>
+</section>
+
+<section id="places">
+<h2>Достопримечательности</h2>
+
+<div class="filters">
+<button onclick="filterPlaces('all')" class="active">Все</button>
+<button onclick="filterPlaces('architecture')">Архитектура</button>
+<button onclick="filterPlaces('memory')">Памятники</button>
+<button onclick="filterPlaces('park')">Парки</button>
+</div>
+
+<div class="cards" id="cardContainer">
+
+<!-- (оставляю твои карточки без изменений) -->
+
+<div class="card" data-category="architecture">
+<img src="images/teatr.jpg">
+<div>
+<h3>Тюменский драматический театр</h3>
+<p>Один из главных архитектурных символов города...</p>
+</div>
+</div>
+
+<div class="card" data-category="architecture">
+<img src="images/zdanie.jpg">
+<div>
+<h3>Комплекс зданий на улице Республики</h3>
+<p>Купеческие особняки XIX–XX веков образуют каменную летопись города.</p>
+</div>
+</div>
+
+<div class="card" data-category="park">
+<img src="images/most.jpg">
+<div>
+<h3>Набережная реки Туры</h3>
+<p>Четырёхуровневая набережная — современный символ города.</p>
+</div>
+</div>
+
+<div class="card" data-category="memory">
+<img src="images/koshki.jpg">
+<div>
+<h3>Сквер сибирских кошек</h3>
+<p>Памятник кошкам, спасшим блокадный Ленинград.</p>
+</div>
+</div>
+
+<div class="card" data-category="park">
+<img src="images/cb.jpg">
+<div>
+<h3>Цветной бульвар</h3>
+<p>Пешеходная зона с аттракционами и фонтанами.</p>
+</div>
+</div>
+
+<div class="card" data-category="park">
+<img src="images/gilevka.jpg">
+<div>
+<h3>Гилевская роща</h3>
+<p>Лесопарк площадью около 90 га.</p>
+</div>
+</div>
+
+<div class="card" data-category="memory">
+<img src="images/mostik.jpg">
+<div>
+<h3>Мост Влюблённых</h3>
+<p>Популярное место прогулок и встреч.</p>
+</div>
+</div>
+
+<!-- НОВЫЕ -->
+<div class="card" data-category="architecture">
+<img src="images/dom.jpg">
+<div>
+<h3>Дом Панкратьева</h3>
+<p>Один из немногих сохранившихся купеческих особняков Старой Тюмени...</p>
+</div>
+</div>
+
+<div class="card" data-category="architecture">
+<img src="images/voda.jpg">
+<div>
+<h3>Водонапорная башня</h3>
+<p>Исторический памятник кирпичного стиля начала XX века.</p>
+</div>
+</div>
+
+<div class="card" data-category="architecture">
+<img src="images/biblioteka.jpg">
+<div>
+<h3>Научная библиотека им. Д.И. Менделеева</h3>
+<p>Крупнейший информационный центр региона.</p>
+</div>
+</div>
+
+<div class="card" data-category="memory">
+<img src="images/pamatnik.jpg">
+<div>
+<h3>Памятник труженикам тыла</h3>
+<p>Бронзовая композиция, посвящённая подвигу тыловиков.</p>
+</div>
+</div>
+
+<div class="card" data-category="memory">
+<img src="images/vdv.jpg">
+<div>
+<h3>Сквер десантников</h3>
+<p>Парк, посвящённый воинам ВДВ.</p>
+</div>
+</div>
+
+<div class="card" data-category="memory">
+<img src="images/pamat.jpg">
+<div>
+<h3>Площадь памяти</h3>
+<p>Мемориальный комплекс с Вечным огнём и аллеями.</p>
+</div>
+</div>
+
+<div class="card" data-category="park">
+<img src="images/ecopark.jpg">
+<div>
+<h3>Экопарк «Затюменский»</h3>
+<p>Лесопарк с дорожками и спортивной инфраструктурой.</p>
+</div>
+</div>
+
+<div class="card" data-category="park">
+<img src="images/korea.jpg">
+<div>
+<h3>Парк Дружбы России и Республики Корея</h3>
+<p>Зона отдыха в восточном стиле.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ОБНОВЛЕННЫЕ МАРШРУТЫ -->
+
+<section id="routes">
+<h2>Тематические маршруты</h2>
+
+<p><strong>🏛 Каменная Тюмень (архитектура):</strong><br>
+Драмтеатр → Дом Панкратьева → Улица Республики → Водонапорная башня → Библиотека Менделеева → Набережная</p>
+
+<p><strong>🕯 Город памяти:</strong><br>
+Сквер кошек → Площадь памяти → Памятник труженикам тыла → Сквер десантников → Мост Влюблённых</p>
+
+<p><strong>🌳 Парки и отдых:</strong><br>
+Цветной бульвар → Набережная → Экопарк «Затюменский» → Парк Дружбы Россия–Корея → Гилевская роща</p>
+
+<p><strong>🚶 Большой обзорный маршрут (1 день):</strong><br>
+Драмтеатр → Улица Республики → Дом Панкратьева → Башня → Набережная → Цветной бульвар → Сквер кошек → Мост Влюблённых</p>
+
+</section>
+
+<footer>
+<p>© 2026 Путеводитель по Тюмени</p>
+</footer>
+
+<script>
+function filterPlaces(category){
+const cards=document.querySelectorAll('.card');
+const buttons=document.querySelectorAll('.filters button');
+buttons.forEach(b=>b.classList.remove('active'));
+event.target.classList.add('active');
+
+cards.forEach(card=>{
+if(category==='all'||card.dataset.category===category){
+card.style.display='block';
+}else{
+card.style.display='none';
+}
+});
+}
+</script>
+
+</body>
+</html>
